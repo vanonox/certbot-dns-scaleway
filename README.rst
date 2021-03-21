@@ -3,14 +3,14 @@ certbot-dns-scaleway
 
 Scaleway_ DNS Authenticator plugin for Certbot_
 
-This plugin process the process of completing a ``dns-01`` challenge by adding/removing TXT records using the Scaleway DNS API.
+This plugin automates the process of completing a ``dns-01`` challenge by adding/removing TXT records using the Scaleway DNS API.
 
 Configuration of Scaleway Certbot Plugin
 ----------------------------------------
 
 Generate a Token for your Project at Scaleway Console (follow https://www.scaleway.com/en/docs/generate-api-keys/)
 
-.. _Scaleway Console: https://console.scaleway.com
+.. _Scaleway: https://scaleway.com
 .. _Certbot: https://certbot.eff.org/
 
 Installation
@@ -72,7 +72,7 @@ To acquire a single certificate for both ``example.com`` and
 
    certbot certonly \
      --authenticator dns-scaleway \
-     --dns-scaleway-credentials /etc/letsencrypt/.secrets/domain.tld.ini \
+     --dns-scaleway-credentials /etc/letsencrypt/.secrets/scaleway.ini \
      --dns-scaleway-propagation-seconds 900 \
      --server https://acme-v02.api.letsencrypt.org/directory \
      --agree-tos \
@@ -106,12 +106,13 @@ Once that's finished, the application can be run as follows::
        --authenticator dns-scaleway \
        --dns-scaleway-propagation-seconds 900 \
        --dns-scaleway-credentials \
-           /etc/letsencrypt/.secrets/domain.tld.ini \
+           /etc/letsencrypt/.secrets/scaleway.ini \
        --no-self-upgrade \
        --keep-until-expiring --non-interactive --expand \
        --server https://acme-v02.api.letsencrypt.org/directory \
        -d example.com -d '*.example.com'
 
-It is suggested to secure the folder as follows::
+It is suggested to secure the folder as follows:
+
 chown root:root /etc/letsencrypt/.secrets
 chmod 600 /etc/letsencrypt/.secrets
