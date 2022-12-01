@@ -3,8 +3,6 @@ import json
 import logging
 import requests
 
-import zope.interface
-
 from certbot import errors
 from certbot import interfaces
 from certbot.plugins import dns_common
@@ -15,8 +13,6 @@ DEFAULT_ENDPOINT = 'https://api.scaleway.com'
 DEFAULT_VERSION = 'v2beta1'
 TOKEN_URL = 'https://cloud.scaleway.com/#/account'
 
-@zope.interface.implementer(interfaces.IAuthenticator)
-@zope.interface.provider(interfaces.IPluginFactory)
 class Authenticator(dns_common.DNSAuthenticator):
     """DNS Authenticator for Scaleway
 
